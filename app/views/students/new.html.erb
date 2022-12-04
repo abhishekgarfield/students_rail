@@ -1,0 +1,59 @@
+
+<h1>hello new student</h1>
+<%= form_with scope: :student, url:"/students" do |form|%>
+
+<div>
+<%=form.label :name%>
+<%=form.text_field :name%>
+<% @student.errors.full_messages_for(:name).each do |message|%>
+<div class="error"><%=message%></div>
+<%end%>
+</div>
+<div>
+<%=form.label :email%>
+<%=form.text_field :email%>
+<% @student.errors.full_messages_for(:email).each do |message|%>
+<div class="error"><%=message%></div>
+<%end%>
+</div>
+<div>
+<%=form.label :country_id%>
+<%=form.select :country_id , @countries.map { |country| [country.code,country.id] }%>
+<% @student.errors.full_messages_for(:country_id).each do |message|%>
+<div class="error"><%=message%></div>
+<%end%>
+</div>
+<div>
+<%=form.label :phone%>
+<%=form.text_field :phone%>
+<% @student.errors.full_messages_for(:number).each do |message|%>
+<div class="error"><%=message%></div>
+<%end%>
+</div>
+<div>
+<%=form.label :gender%>
+<%=form.radio_button :gender,"male"%>
+<%=form.radio_button :gender,"female"%>
+<% @student.errors.full_messages_for(:gender).each do |message|%>
+<div class="error"><%=message%></div>
+<%end%>
+<div>
+<%=form.label :city%>
+<%=form.select :city_id , @cities.map {|city| [city.name,city.id]}%>
+<% @student.errors.full_messages_for(:city_id).each do |message|%>
+<div class="error"><%=message%></div>
+<%end%>
+</div>
+<div>
+<%=form.label :extra_activities%>
+<% ["cricket","basketball"].each do |extra|%>
+<span><%= extra %> </span>
+<%=form.check_box :extra_Activities ,{multiple:true},extra,false%>
+<%end%>
+<% @student.errors.full_messages_for(:city_id).each do |message|%>
+<div class="error"><%=message%></div>
+<%end%>
+</div>
+</div>
+<%=form.submit%>
+<%end%>

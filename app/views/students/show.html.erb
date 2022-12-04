@@ -1,0 +1,11 @@
+<h1>Student info</h1>
+<div>
+ <%JSON.parse(@student.to_json).each do |key,value| %>
+ <div><%= key.gsub("_"," ")%> <%= value.class==Integer||String ? value : value.map {|value| puts "#{value}"}%></div>
+ <%end%>
+ </div>
+ <%= link_to "edit" , "/students/#{@student[:id]}/edit"%>
+  <%= link_to "Delete" , "/students/#{@student[:id]}",data:{
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure"
+  }%>
