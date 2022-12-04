@@ -18,7 +18,7 @@
 </div>
 <div>
 <%=form.label :country_id%>
-<%=form.select :country_id , @countries.map { |country| [country.code,country.id] }%>
+<%=form.select :country_id , @countries.map { |country| [country.name,country.id] },:prompt => "select country code"%>
 <% @student.errors.full_messages_for(:country_id).each do |message|%>
 <div class="error"><%=message%></div>
 <%end%>
